@@ -14,6 +14,15 @@ public class Task extends TaskComponent {
         subtasks = new ArrayList<>();
     }
 
+    // Ajout des getters
+    public String getName() {
+        return name;
+    }
+
+    public List<TaskComponent> getSubtasks() {
+        return subtasks;
+    }
+
     public void add(TaskComponent taskComponent) {
         subtasks.add(taskComponent);
     }
