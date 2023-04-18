@@ -12,7 +12,7 @@ Le pattern Builder est utilisé pour simplifier la création d'objets complexes.
 
 Exemple de la classe `TaskBuilder` :
 
-`java
+```java
 public class TaskBuilder {
     private String name;
     private String description;
@@ -36,7 +36,8 @@ public class TaskBuilder {
     public Task build() {
         return new Task(name, description, status);
     }
-}`
+}
+```
 
 Dans cet exemple, le pattern Builder est utilisé pour créer des objets Task de manière fluide et lisible. L'utilisateur peut définir les attributs name, description et status de la tâche en utilisant des méthodes chaînées, puis construire l'objet Task avec la méthode build().
 
@@ -45,7 +46,8 @@ Le pattern Composite est utilisé pour créer une structure hiérarchique d'obje
 
 Exemple de la classe Task utilisant le pattern Composite :
 
-`public class Task extends TaskComponent {
+```java
+public class Task extends TaskComponent {
     private String name;
     private String description;
     private String status;
@@ -72,6 +74,7 @@ Exemple de la classe Task utilisant le pattern Composite :
             subtask.display(depth + 1);
         }
     }
-}`
+}
+``` 
 
 Dans cet exemple, la classe Task étend la classe abstraite TaskComponent et implémente les méthodes add, remove et display pour gérer les sous-tâches. L'utilisation du pattern Composite permet de simplifier la gestion des tâches et des sous-tâches en facilitant l'ajout
