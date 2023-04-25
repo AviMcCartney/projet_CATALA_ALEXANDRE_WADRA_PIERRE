@@ -1,40 +1,67 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * La classe Task est un exemple du pattern Composite.
+ * Elle permet de créer une structure hiérarchique d'objets Task,
+ * où chaque objet peut contenir d'autres objets similaires (sous-tâches).
+ */
 public class Task extends TaskComponent {
-    private String name;
+    private String nom;
     private String description;
-    private String status;
-    private List<TaskComponent> subtasks;
+    private String statut;
+    private List<TaskComponent> sousTaches;
 
-    public Task(String name, String description, String status) {
-        this.name = name;
+    /**
+     * Construit une nouvelle instance de Task.
+     * @param nom Le nom de la tâche.
+     * @param description La description de la tâche.
+     * @param statut Le statut de la tâche.
+     */
+    public Task(String nom, String description, String statut) {
+        this.nom = nom;
         this.description = description;
-        this.status = status;
-        subtasks = new ArrayList<>();
+        this.statut = statut;
+        sousTaches = new ArrayList<TaskComponent>();
     }
 
-    // Ajout des getters
+    @Override
     public String getName() {
-        return name;
+        return nom;
     }
 
+    @Override
     public List<TaskComponent> getSubtasks() {
-        return subtasks;
+        return sousTaches;
     }
 
+    /**
+     * Ajoute une sous-tâche à la liste des sous-tâches.
+     * @param taskComponent La sous-tâche à ajouter.
+     */
+    @Override
     public void add(TaskComponent taskComponent) {
-        subtasks.add(taskComponent);
+        sousTaches.add(taskComponent);
     }
 
+    /**
+     * Supprime une sous-tâche de la liste des sous-tâches.
+     * @param taskComponent La sous-tâche à supprimer.
+     */
+    @Override
     public void remove(TaskComponent taskComponent) {
-        subtasks.remove(taskComponent);
+        sousTaches.remove(taskComponent);
     }
 
-    public void display(int depth) {
-        System.out.println("-".repeat(depth) + " " + name + " (" + status + ")");
-        for (TaskComponent subtask : subtasks) {
-            subtask.display(depth + 1);
+    /**
+     * Affiche la tâche et ses sous-tâches de manière hiérarchique.
+     * @param profondeur La profondeur de la tâche dans la hiérarchie.
+     */
+    @Override
+    public void display(int profondeur) {
+        System.out.println("-".repeat(profondeur) + " Nom: " + nom + " ; Description: " + description + " ; Statut: (" + statut + ")");
+        for (TaskComponent sousTache : sousTaches) {
+            sousTache.display(profondeur + 1);
         }
     }
 }

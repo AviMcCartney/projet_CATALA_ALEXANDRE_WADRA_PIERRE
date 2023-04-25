@@ -4,7 +4,7 @@ public class TaskManager {
     private TaskComponent root;
 
     public TaskManager() {
-        root = new Task("Root", "Root task", "N/A");
+        root = new Task("Racine", "Tâche racine", "Aucun");
     }
 
     public void run() {
@@ -12,49 +12,49 @@ public class TaskManager {
         String command;
 
         do {
-            System.out.print("Enter command (add, remove, display, exit): ");
+            System.out.print("Entré un commande(ajouter, supprimer, afficher, sortir): ");
             command = scanner.nextLine();
 
             switch (command) {
-                case "add":
+                case "ajouter":
                     addTask(scanner);
                     break;
-                case "remove":
+                case "supprimer":
                     removeTask(scanner);
                     break;
-                case "display":
+                case "afficher":
                     displayTasks();
                     break;
-                case "exit":
-                    System.out.println("Exiting Task Manager...");
+                case "sortir":
+                    System.out.println("Sortie du manager de tâche...");
                     break;
                 default:
-                    System.out.println("Invalid command. Try again.");
+                    System.out.println("Commande invalide. Réessayer.");
             }
-        } while (!command.equals("exit"));
+        } while (!command.equals("sortir"));
 
         scanner.close();
     }
 
     private void addTask(Scanner scanner) {
-        System.out.print("Enter task name: ");
+        System.out.print("Entrer le nom de la tâche: ");
         String name = scanner.nextLine();
-        System.out.print("Enter task description: ");
+        System.out.print("Entrer la description de la tâche: ");
         String description = scanner.nextLine();
-        System.out.print("Enter task status (todo, inprogress, done): ");
+        System.out.print("Entrer status de la tâche (à faire, en cours, terminé): ");
         String status = scanner.nextLine();
 
         Task task = new TaskBuilder()
-                .setName(name)
+                .setNom(name)
                 .setDescription(description)
-                .setStatus(status)
+                .setStatut(status)
                 .build();
 
         root.add(task);
     }
 
     private void removeTask(Scanner scanner) {
-        System.out.print("Enter task name to remove: ");
+        System.out.print("Entrer un nom de tâche à supprimé: ");
         String name = scanner.nextLine();
 
         TaskComponent taskToRemove = null;
@@ -68,14 +68,14 @@ public class TaskManager {
 
         if (taskToRemove != null) {
             root.remove(taskToRemove);
-            System.out.println("Task removed.");
+            System.out.println("Tâche supprimée.");
         } else {
-            System.out.println("Task not found.");
+            System.out.println("Tâche introuvable.");
         }
     }
 
     private void displayTasks() {
-        System.out.println("Task List:");
+        System.out.println("Liste des tâches");
         root.display(0);
     }
 }
