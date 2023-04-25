@@ -4,7 +4,7 @@ public class TaskManager {
     private TaskComponent root;
 
     public TaskManager() {
-        root = new Task("Racine", "Tâche racine", "Aucun");
+        root = new Task("Racine", "Tâche racine", "En cours");
     }
 
     public void run() {
@@ -41,8 +41,26 @@ public class TaskManager {
         String name = scanner.nextLine();
         System.out.print("Entrer la description de la tâche: ");
         String description = scanner.nextLine();
-        System.out.print("Entrer status de la tâche (à faire, en cours, terminé): ");
+        System.out.print("Entrer le statut de la tâche (à faire, en cours, terminé): ");
         String status = scanner.nextLine();
+
+        boolean statusValide = false;
+        while (!statusValide) {
+            switch(status) {
+                case "à faire":
+                    statusValide = true;
+                    break;
+                case "en cours":
+                    statusValide = true;
+                    break;
+                case "terminé":
+                    statusValide = true;
+                    break;
+                default:
+                    System.out.println("Statut invalide. Veuillez entrer un statut valide (à faire, en cours, terminé): ");
+                    status = scanner.nextLine();
+            }
+        }
 
         Task task = new TaskBuilder()
                 .setNom(name)
