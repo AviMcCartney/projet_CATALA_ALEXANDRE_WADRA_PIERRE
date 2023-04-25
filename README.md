@@ -77,4 +77,4 @@ public class Task extends TaskComponent {
 }
 ``` 
 
-Dans cet exemple, la classe Task étend la classe abstraite TaskComponent et implémente les méthodes add, remove et display pour gérer les sous-tâches. L'utilisation du pattern Composite permet de simplifier la gestion des tâches et des sous-tâches en facilitant l'ajout
+Dans cet exemple, la classe Task étend la classe abstraite TaskComponent et implémente les méthodes add, remove et display pour gérer les sous-tâches. L'utilisation du pattern Composite permet de simplifier la gestion des tâches et des sous-tâches en facilitant l'ajout, la suppression et l'affichage des tâches de manière hiérarchique.
